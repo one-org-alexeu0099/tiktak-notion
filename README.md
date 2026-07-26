@@ -4,7 +4,7 @@
 Статический vanilla JS-проект «Крестики-нолики».
 Это полигон для процесса управления разработкой через Notion и агентов.
 
-Репозиторий: https://github.com/alexeu00999/tiktak-notion
+Репозиторий: https://github.com/one-org-alexeu0099/tiktak-notion
 - [AGENTS.md](AGENTS.md) — стартовый указатель для агентов.
 
 ## Структура проекта

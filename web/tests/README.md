@@ -1,3 +1,9 @@
 # Tests
 
-Каталог `/web/tests` подготовлен для тестов игровой логики на этапе S1.
+Тесты игровой логики (game.js). Используют встроенный test runner Node.js.
+
+## Запуск
+
+```bash
+node --test web/tests/game.test.js
+```

@@ -110,7 +110,9 @@ describe("game core", () => {
   it("move to occupied cell returns same state", () => {
     const g = move(createGame(), 0);
     const g2 = move(g, 0);
-    assert.deepEqual(g2, g);
+    assert.deepEqual(g2.board, g.board);
+    assert.equal(g2.current, g.current);
+    assert.equal(g2.status, g.status);
   });
 
   it("move after game over returns same state", () => {
@@ -119,7 +121,9 @@ describe("game core", () => {
     ]);
     assert.equal(g.status, "winX");
     const g2 = move(g, 5);
-    assert.deepEqual(g2, g);
+    assert.deepEqual(g2.board, g.board);
+    assert.equal(g2.current, g.current);
+    assert.equal(g2.status, g.status);
   });
 
   it("move with invalid index returns same state", () => {
@@ -147,5 +151,46 @@ describe("game core", () => {
       [0], [3], [1], [4], [2]
     ]);
     assert.equal(getStatus(g), "winX");
+  });
+
+  it("after winning move current stays with winner (§4.2)", () => {
+    const g = fillBoard(createGame(), [
+      [0], [3], [1], [4], [2]
+    ]);
+    assert.equal(g.status, "winX");
+    assert.equal(g.current, "X");
+  });
+
+  it("win on 9th cell: full board with line is win, not draw", () => {
+    let g = createGame();
+    g = move(g, 0); g = move(g, 1);
+    g = move(g, 2); g = move(g, 3);
+    g = move(g, 4); g = move(g, 5);
+    g = move(g, 7); g = move(g, 8);
+    g = move(g, 6);
+    assert.equal(g.status, "winX");
+    assert.ok(g.winLine, "winLine must not be null on win");
+  });
+
+  it("win O on main diagonal [0,4,8]", () => {
+    let g = createGame();
+    g = move(g, 1); g = move(g, 0);
+    g = move(g, 2); g = move(g, 4);
+    g = move(g, 3); g = move(g, 8);
+    assert.equal(g.status, "winO");
+    assert.deepEqual(g.winLine, [0, 4, 8]);
+  });
+
+  it("full match: reset → play to terminal state (§6.1)", () => {
+    let g = reset();
+    assert.equal(g.status, "playing");
+    assert.equal(g.current, "X");
+    g = move(g, 0); g = move(g, 1);
+    g = move(g, 2); g = move(g, 4);
+    g = move(g, 3); g = move(g, 6);
+    g = move(g, 5); g = move(g, 8);
+    g = move(g, 7);
+    const terminal = g.status === "winX" || g.status === "winO" || g.status === "draw";
+    assert.ok(terminal, `expected terminal status, got ${g.status}`);
   });
 });

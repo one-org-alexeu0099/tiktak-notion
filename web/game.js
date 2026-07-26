@@ -74,8 +74,6 @@ function reset() {
   return createGame();
 }
 
-const gameApi = {createGame, move, getStatus, reset};
-
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = gameApi;
-}
+const gameApi = { createGame, move, reset, getStatus };
+if (typeof module !== "undefined" && module.exports) { module.exports = gameApi; }
+if (typeof window !== "undefined") { window.TTTGame = gameApi; }

@@ -4,3 +4,8 @@ node_modules/
 .idea/
 .vscode/
 *.zip
+.artifacts/
+.playwright-cli/
+test-results/
+playwright-report/
+blob-report/

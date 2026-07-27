@@ -22,6 +22,14 @@
 
 ## Запуск
 
+Из корня репозитория доступны штатные команды:
+
+```bash
+make dev
+make test
+make check
+```
+
 ### Открытие файла
 
 Открой `web/index.html` двойным кликом в Chrome, Firefox, Safari или Edge.

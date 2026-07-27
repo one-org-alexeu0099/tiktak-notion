@@ -59,4 +59,3 @@ node --test web/tests/game.test.js
 ## Артефакты
 
 Артефакты проекта именуются по схеме `ttt_v1_sX_aN`.
-test

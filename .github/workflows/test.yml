@@ -1,0 +1,34 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+
+      - name: Run tests
+        run: make test
+
+      - name: Check working tree
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Tests changed the working tree:"
+            git status --short
+            exit 1
+          fi

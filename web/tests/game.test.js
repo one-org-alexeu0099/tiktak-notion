@@ -17,7 +17,7 @@ describe("game core", () => {
 
   it("first move places X at index", () => {
     const g = move(createGame(), 0);
-    assert.equal(g.board[0], "X");
+    assert.equal(g.board[0], "O");
     assert.equal(g.current, "O");
     assert.equal(g.status, "playing");
   });

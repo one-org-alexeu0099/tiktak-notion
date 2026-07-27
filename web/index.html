@@ -15,6 +15,27 @@
     </header>
 
     <section class="game-panel" aria-label="Игровое поле">
+      <section class="scoreboard" aria-labelledby="score-title">
+        <div class="scoreboard-heading">
+          <h2 id="score-title">Счёт матчей</h2>
+          <button id="score-reset" class="score-reset" type="button">Сбросить счёт</button>
+        </div>
+        <div class="score-grid">
+          <div class="score-item score-item--x">
+            <span class="score-label">X</span>
+            <strong id="score-x">0</strong>
+          </div>
+          <div class="score-item score-item--o">
+            <span class="score-label">O</span>
+            <strong id="score-o">0</strong>
+          </div>
+          <div class="score-item score-item--draw">
+            <span class="score-label">Ничьи</span>
+            <strong id="score-draws">0</strong>
+          </div>
+        </div>
+      </section>
+
       <div id="board" class="board" role="grid" aria-label="Поле 3 на 3">
         <button class="cell" type="button" data-index="0" role="gridcell" aria-label="Клетка 1"></button>
         <button class="cell" type="button" data-index="1" role="gridcell" aria-label="Клетка 2"></button>
